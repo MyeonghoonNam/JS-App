@@ -1,0 +1,24 @@
+.list {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.toDo {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.toDo__label {
+  line-height:30px;
+  vertical-align: middle;
+}
+
+.toDo__button {
+  background: none;
+  border:0;
+  outline:0;
+  margin-right: 10px;
+  cursor: pointer;
+  line-height:30px;
+  vertical-align: middle;
+}

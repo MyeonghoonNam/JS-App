@@ -13,6 +13,7 @@
   border-bottom: 3px solid rgba(255, 255, 255, 0.8);
   margin-bottom: 20px;
   text-align: center;
+  width:30vw;
 }
 .center .name__input::placeholder {
   color: white;
@@ -31,4 +32,8 @@
 
 .center .name {
   margin-bottom: 30px;
+}
+
+.center .none {
+  display:none;
 }

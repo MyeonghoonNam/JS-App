@@ -1,4 +1,5 @@
 const nameContainer = document.querySelector(".js-name");
+const toDoContainer = document.querySelector(".js-to-do-container");
 
 function paintName(name){
   nameContainer.innerHTML = "";
@@ -9,6 +10,7 @@ function paintName(name){
   span.innerText = name;
 
   nameContainer.appendChild(span);
+  toDoContainer.classList.remove("none");
 
   return;
 }

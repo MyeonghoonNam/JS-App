@@ -49,6 +49,8 @@ input {
   font-size: 22px;
   color: white;
   border-bottom: 2px solid white;
+  text-align: center;
+  width:25vw;
 }
 
 input::placeholder {
