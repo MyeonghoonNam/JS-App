@@ -7,7 +7,7 @@ function paintName(name){
   const span = document.createElement("span");
 
   span.className = "name__text";
-  span.innerText = name;
+  span.innerText = `Hello, Welcome ${name} !`;
 
   nameContainer.appendChild(span);
   toDoContainer.classList.remove("none");
