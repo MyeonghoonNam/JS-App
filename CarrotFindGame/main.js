@@ -14,7 +14,19 @@ let started = false;
 let score = 0;
 let timer = undefined;
 
-function startGame() {}
+gameBtn.addEventListener('click', () => {
+  if (started) {
+    stopGame();
+  } else {
+    startGame();
+  }
+
+  started = !started;
+});
+
+function startGame() {
+  initGame();
+}
 
 function stopGame() {}
 
@@ -55,6 +67,3 @@ function addItem(className, count, imgPath) {
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
-
-// 실행부
-initGame();
