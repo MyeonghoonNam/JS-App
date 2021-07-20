@@ -1,8 +1,24 @@
 'use strict';
 
 const CARROT_SIZE = 80;
+const CARROT_COUNT = 10;
+const BUG_COUNT = 10;
+
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
+const gameBtn = document.querySelector('.game__button');
+const gameTimer = document.querySelector('.game__timer');
+const gameScore = document.querySelector('.game__score');
+
+let started = false;
+let score = 0;
+let timer = undefined;
+
+function startGame() {}
+
+function stopGame() {}
+
+function showStopButton() {}
 
 // 게임 초기화 설정
 function initGame() {
