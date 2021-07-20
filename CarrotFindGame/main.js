@@ -26,11 +26,17 @@ gameBtn.addEventListener('click', () => {
 
 function startGame() {
   initGame();
+  showStopButton();
 }
 
 function stopGame() {}
 
-function showStopButton() {}
+function showStopButton() {
+  const icon = document.querySelector('.fa-play');
+
+  icon.classList.add('fa-stop');
+  icon.classList.remove('fa-play');
+}
 
 // 게임 초기화 설정
 function initGame() {
