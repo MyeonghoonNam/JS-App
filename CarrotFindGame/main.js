@@ -27,6 +27,7 @@ gameBtn.addEventListener('click', () => {
 function startGame() {
   initGame();
   showStopButton();
+  showTimerAndScore();
 }
 
 function stopGame() {}
@@ -38,10 +39,18 @@ function showStopButton() {
   icon.classList.remove('fa-play');
 }
 
+function showTimerAndScore() {
+  gameTimer.style.visibility = 'visible';
+  gameScore.style.visibility = 'visible';
+}
+
 // 게임 초기화 설정
 function initGame() {
-  addItem('carrot', 5, 'img/carrot.png');
-  addItem('bug', 5, 'img/bug.png');
+  field.innerHTML = '';
+  gameScore.innerText = CARROT_COUNT;
+
+  addItem('carrot', CARROT_COUNT, 'img/carrot.png');
+  addItem('bug', BUG_COUNT, 'img/bug.png');
 }
 
 // 필드에 당근과 벌레들을 추가
