@@ -73,6 +73,7 @@ function startGameTimer() {
   timer = setInterval(() => {
     if (remainingTimeSec <= 0) {
       clearInterval(timer);
+      finishGame(CARROT_COUNT === score);
 
       return;
     }
@@ -105,10 +106,10 @@ function onFieldClick(event) {
 
     if (score === CARROT_COUNT) {
       finishGame(true);
-    } else if (target.matches('.bug')) {
-      stopGameTimer();
-      finishGame(false);
     }
+  } else if (target.matches('.bug')) {
+    stopGameTimer();
+    finishGame(false);
   }
 }
 
@@ -118,6 +119,7 @@ function updateScoreBoard() {
 
 function finishGame(win) {
   started = false;
+  stopGameTimer();
   hideGameButton();
   showPopUpWithText(win ? 'You Won 🎉' : 'You Lost 😂');
 }
