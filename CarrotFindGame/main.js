@@ -29,6 +29,8 @@ gameBtn.addEventListener('click', () => {
   started = !started;
 });
 
+field.addEventListener('click', onFieldClick);
+
 function startGame() {
   initGame();
   showStopButton();
@@ -89,6 +91,8 @@ function updateGameTimer(time) {
 
   gameTimer.innerText = `${minutes}:${seconds}`;
 }
+
+function onFieldClick() {}
 
 // 게임 초기화 설정
 function initGame() {
