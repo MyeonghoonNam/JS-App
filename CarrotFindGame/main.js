@@ -50,6 +50,10 @@ function showTimerAndScore() {
   gameScore.style.visibility = 'visible';
 }
 
+function hideGameButton() {
+  gameBtn.style.visibility = 'hidden';
+}
+
 function startGameTimer() {
   let remainingTimeSec = GAME_DURATION_SEC;
 
