@@ -112,7 +112,9 @@ function onFieldClick(event) {
   }
 }
 
-function updateScoreBoard() {}
+function updateScoreBoard() {
+  gameScore.innerText = CARROT_COUNT - score;
+}
 
 function finishGame(win) {}
 
