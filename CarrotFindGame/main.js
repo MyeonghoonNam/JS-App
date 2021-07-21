@@ -46,7 +46,21 @@ function showTimerAndScore() {
   gameScore.style.visibility = 'visible';
 }
 
-function startGameTimer() {}
+function startGameTimer() {
+  let remainingTimeSec = GAME_DURATION_SEC;
+
+  updateGameTimer(remainingTimeSec);
+
+  timer = setInterval(() => {
+    if (remainingTimeSec <= 0) {
+      clearInterval(timer);
+
+      return;
+    }
+
+    updateGameTimer(--remainingTimeSec);
+  }, 1000);
+}
 
 function updateGameTimer(time) {
   const minutes = Math.floor(time / 60);
