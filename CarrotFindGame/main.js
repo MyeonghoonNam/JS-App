@@ -32,6 +32,7 @@ field.addEventListener('click', onFieldClick);
 popUpRefresh.addEventListener('click', () => {
   startGame();
   hidePopUp();
+  showGameButton();
 });
 
 function startGame() {
@@ -66,6 +67,10 @@ function showStopButton() {
 function showTimerAndScore() {
   gameTimer.style.visibility = 'visible';
   gameScore.style.visibility = 'visible';
+}
+
+function showGameButton() {
+  gameBtn.style.visibility = 'visible';
 }
 
 function hideGameButton() {
