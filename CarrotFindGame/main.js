@@ -105,7 +105,7 @@ function addItem(className, count, imgPath) {
   const y1 = 0;
 
   const x2 = fieldRect.width - CARROT_SIZE;
-  const y2 = fieldRect.height - CARROT_SIZE;
+  const y2 = fieldRect.height - CARROT_SIZE - 40;
 
   for (let i = 0; i < count; i++) {
     const item = document.createElement('img');
@@ -116,6 +116,9 @@ function addItem(className, count, imgPath) {
 
     const x = randomNumber(x1, x2);
     const y = randomNumber(y1, y2);
+
+    console.log(x);
+    console.log(y);
 
     item.style.left = `${x}px`;
     item.style.top = `${y}px`;
