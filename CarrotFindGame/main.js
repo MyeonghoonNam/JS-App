@@ -54,7 +54,7 @@ function finishGame(win) {
 }
 
 function showStopButton() {
-  const icon = document.querySelector('.fa-play');
+  const icon = document.querySelector('.fas');
 
   icon.classList.add('fa-stop');
   icon.classList.remove('fa-play');
@@ -72,6 +72,10 @@ function hideGameButton() {
 function showPopUpWithText(text) {
   popUpMessage.innerText = text;
   popUp.classList.remove('pop-up--hide');
+}
+
+function hidePopUp() {
+  popUp.classList.add('pop-up--hide');
 }
 
 function startGameTimer() {
