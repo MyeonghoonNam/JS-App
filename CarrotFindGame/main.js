@@ -116,7 +116,11 @@ function updateScoreBoard() {
   gameScore.innerText = CARROT_COUNT - score;
 }
 
-function finishGame(win) {}
+function finishGame(win) {
+  started = false;
+  hideGameButton();
+  showPopUpWithText(win ? 'You Won 🎉' : 'You Lost 😂');
+}
 
 // 게임 초기화 설정
 function initGame() {
