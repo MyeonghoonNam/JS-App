@@ -92,7 +92,29 @@ function updateGameTimer(time) {
   gameTimer.innerText = `${minutes}:${seconds}`;
 }
 
-function onFieldClick() {}
+function onFieldClick(event) {
+  if (!started) return;
+
+  const target = event.target;
+
+  if (target.matches('.carrot')) {
+    target.remove();
+    score++;
+
+    updateScoreBoard();
+
+    if (score === CARROT_COUNT) {
+      finishGame(true);
+    } else if (target.matches('.bug')) {
+      stopGameTimer();
+      finishGame(false);
+    }
+  }
+}
+
+function updateScoreBoard() {}
+
+function finishGame(win) {}
 
 // 게임 초기화 설정
 function initGame() {
