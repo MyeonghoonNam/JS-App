@@ -25,11 +25,14 @@ gameBtn.addEventListener('click', () => {
   } else {
     startGame();
   }
-
-  started = !started;
 });
 
 field.addEventListener('click', onFieldClick);
+
+popUpRefresh.addEventListener('click', () => {
+  startGame();
+  hidePopUp();
+});
 
 function startGame() {
   started = true;
