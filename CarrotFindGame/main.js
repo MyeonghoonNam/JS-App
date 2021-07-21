@@ -141,6 +141,7 @@ function addItem(className, count, imgPath) {
     item.setAttribute('class', className);
     item.setAttribute('src', imgPath);
     item.style.position = 'absolute';
+    item.style.cursor = 'pointer';
 
     const x = randomNumber(x1, x2);
     const y = randomNumber(y1, y2);
