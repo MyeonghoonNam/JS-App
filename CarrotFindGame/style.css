@@ -15,7 +15,8 @@ button {
   flex-direction: column;
   width: 800px;
   height: 500px;
-  margin: auto;
+  margin: 0 auto;
+  margin-top: 100px;
   background: url(img/background.png) center/cover;
   border-radius: 20px;
 }
