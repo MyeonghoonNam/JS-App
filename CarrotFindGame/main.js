@@ -32,6 +32,7 @@ gameBtn.addEventListener('click', () => {
 field.addEventListener('click', onFieldClick);
 
 function startGame() {
+  started = true;
   initGame();
   showStopButton();
   showTimerAndScore();
@@ -39,9 +40,17 @@ function startGame() {
 }
 
 function stopGame() {
+  started = false;
   stopGameTimer();
   hideGameButton();
   showPopUpWithText('REPLAY ?');
+}
+
+function finishGame(win) {
+  started = false;
+  stopGameTimer();
+  hideGameButton();
+  showPopUpWithText(win ? 'You Won 🎉' : 'You Lost 😂');
 }
 
 function showStopButton() {
@@ -115,13 +124,6 @@ function onFieldClick(event) {
 
 function updateScoreBoard() {
   gameScore.innerText = CARROT_COUNT - score;
-}
-
-function finishGame(win) {
-  started = false;
-  stopGameTimer();
-  hideGameButton();
-  showPopUpWithText(win ? 'You Won 🎉' : 'You Lost 😂');
 }
 
 // 게임 초기화 설정
