@@ -32,7 +32,11 @@ function startGame() {
   startGameTimer();
 }
 
-function stopGame() {}
+function stopGame() {
+  stopGameTimer();
+  hideGameButton();
+  showPopUpWithText('REPLAY ?');
+}
 
 function showStopButton() {
   const icon = document.querySelector('.fa-play');
