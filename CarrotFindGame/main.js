@@ -62,6 +62,10 @@ function startGameTimer() {
   }, 1000);
 }
 
+function stopGameTimer() {
+  clearInterval(timer);
+}
+
 function updateGameTimer(time) {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
