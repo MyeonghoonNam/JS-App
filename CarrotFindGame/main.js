@@ -55,6 +55,8 @@ function stopGame() {
   stopGameTimer();
   hideGameButton();
   showPopUpWithText('REPLAY ?');
+  playSound(alertSound);
+  stopSound(bgSound);
 }
 
 function finishGame(win) {
