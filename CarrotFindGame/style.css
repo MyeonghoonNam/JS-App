@@ -107,3 +107,13 @@ button {
   display: block;
   font-size: 38px;
 }
+
+.carrot,
+.but {
+  transition: transform 100ms ease-in;
+}
+
+.carrot:hover,
+.bug:hover {
+  transform: scale(1.1);
+}
