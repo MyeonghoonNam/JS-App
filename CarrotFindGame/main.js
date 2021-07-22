@@ -61,8 +61,15 @@ function stopGame() {
 
 function finishGame(win) {
   started = false;
-  stopGameTimer();
   hideGameButton();
+
+  if (win) {
+    playSound(winSound);
+  } else {
+    playSound(bugSound);
+  }
+
+  stopGameTimer();
   showPopUpWithText(win ? 'You Won 🎉' : 'You Lost 😂');
 }
 
