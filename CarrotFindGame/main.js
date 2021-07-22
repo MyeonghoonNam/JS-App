@@ -47,6 +47,7 @@ function startGame() {
   showStopButton();
   showTimerAndScore();
   startGameTimer();
+  playSound(bgSound);
 }
 
 function stopGame() {
@@ -122,6 +123,7 @@ function updateGameTimer(time) {
 
 function playSound(sound) {
   sound.currentTime = 0;
+  sound.volume = 0.1;
   sound.play();
 }
 
