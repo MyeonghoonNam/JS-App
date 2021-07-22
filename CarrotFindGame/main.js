@@ -125,6 +125,10 @@ function playSound(sound) {
   sound.play();
 }
 
+function stopSound(sound) {
+  sound.pause();
+}
+
 function onFieldClick(event) {
   if (!started) return;
 
