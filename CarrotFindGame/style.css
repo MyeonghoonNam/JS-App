@@ -110,6 +110,7 @@ button {
 
 .carrot,
 .but {
+  cursor: pointer;
   transition: transform 100ms ease-in;
 }
 
