@@ -15,6 +15,12 @@ const popUp = document.querySelector('.pop-up');
 const popUpRefresh = document.querySelector('.pop-up__refresh');
 const popUpMessage = document.querySelector('.pop-up__message');
 
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const alertSound = new Audio('./sound/alert.wav');
+const bgSound = new Audio('./sound/bg.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
+
 let started = false;
 let score = 0;
 let timer = undefined;
@@ -112,6 +118,11 @@ function updateGameTimer(time) {
   const seconds = time % 60;
 
   gameTimer.innerText = `${minutes}:${seconds}`;
+}
+
+function playSound(sound) {
+  sound.currentTime = 0;
+  sound.play();
 }
 
 function onFieldClick(event) {
