@@ -159,6 +159,7 @@ function updateScoreBoard() {
 
 // 게임 초기화 설정
 function initGame() {
+  score = 0;
   field.innerHTML = '';
   gameScore.innerText = CARROT_COUNT;
 
