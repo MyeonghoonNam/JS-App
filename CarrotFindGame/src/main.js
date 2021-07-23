@@ -1,5 +1,7 @@
 'use strict';
 
+import PopUp from './popUp.js';
+
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 20;
 const BUG_COUNT = 20;
@@ -11,10 +13,6 @@ const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
 
-const popUp = document.querySelector('.pop-up');
-const popUpRefresh = document.querySelector('.pop-up__refresh');
-const popUpMessage = document.querySelector('.pop-up__message');
-
 const carrotSound = new Audio('./sound/carrot_pull.mp3');
 const alertSound = new Audio('./sound/alert.wav');
 const bgSound = new Audio('./sound/bg.mp3');
@@ -24,6 +22,8 @@ const winSound = new Audio('./sound/game_win.mp3');
 let started = false;
 let score = 0;
 let timer = undefined;
+
+const gameBanner = new PopUp();
 
 gameBtn.addEventListener('click', () => {
   if (started) {
@@ -35,9 +35,8 @@ gameBtn.addEventListener('click', () => {
 
 field.addEventListener('click', onFieldClick);
 
-popUpRefresh.addEventListener('click', () => {
+gameBanner.setClickListener(() => {
   startGame();
-  hidePopUp();
   showGameButton();
 });
 
@@ -54,7 +53,7 @@ function stopGame() {
   started = false;
   stopGameTimer();
   hideGameButton();
-  showPopUpWithText('REPLAY ?');
+  gameBanner.showWithText('REPLAY ❓');
   playSound(alertSound);
   stopSound(bgSound);
 }
@@ -70,7 +69,7 @@ function finishGame(win) {
   }
 
   stopGameTimer();
-  showPopUpWithText(win ? 'You Won 🎉' : 'You Lost 😂');
+  gameBanner.showWithText(win ? 'You Won 🎉' : 'You Lost 😂');
 }
 
 function showStopButton() {
@@ -91,15 +90,6 @@ function showGameButton() {
 
 function hideGameButton() {
   gameBtn.style.visibility = 'hidden';
-}
-
-function showPopUpWithText(text) {
-  popUpMessage.innerText = text;
-  popUp.classList.remove('pop-up--hide');
-}
-
-function hidePopUp() {
-  popUp.classList.add('pop-up--hide');
 }
 
 function startGameTimer() {
