@@ -3,8 +3,15 @@
 import Field from './field.js';
 import * as sound from './sound.js';
 
+// freeze : Immutable한 안전성 있는 객체 생성
+export const Reason = Object.freeze({
+  win: 'win',
+  lose: 'lose',
+  stop: 'stop',
+});
+
 // 빌더 패턴(Builder Pattern) : “객체의 표현과 생성과정을 분리”
-export default class GameBuilder {
+export class GameBuilder {
   setGameDuration(duration) {
     this.gameDuration = duration;
     return this;
@@ -83,7 +90,7 @@ class Game {
     this.hideGameButton();
     sound.playAlert();
     sound.stopBackground();
-    this.onGameState && this.onGameState('stop');
+    this.onGameState && this.onGameState(Reason.stop);
   }
 
   finish(win) {
@@ -97,7 +104,7 @@ class Game {
     }
 
     this.stopGameTimer();
-    this.onGameState && this.onGameState(win ? 'win' : 'lose');
+    this.onGameState && this.onGameState(win ? Reason.win : Reason.lose);
   }
 
   showStopButton() {
