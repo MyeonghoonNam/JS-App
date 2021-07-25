@@ -2,6 +2,7 @@
 
 import { GameBuilder, Reason } from './game.js';
 import PopUp from './popUp.js';
+import * as sound from './sound.js';
 
 const gameBanner = new PopUp();
 const game = new GameBuilder()
@@ -15,12 +16,16 @@ game.setGameStateListener((res) => {
 
   switch (res) {
     case Reason.stop:
+      sound.playAlert();
+      sound.stopBackground();
       message = 'REPLAY ❓';
       break;
     case Reason.win:
+      sound.playWin();
       message = 'You Won 🎉';
       break;
     case Reason.lose:
+      sound.playBug();
       message = 'You Lost 😂';
       break;
     default:
