@@ -42,7 +42,7 @@ class Game {
     this.gameBtn = document.querySelector('.game__button');
     this.gameBtn.addEventListener('click', () => {
       if (this.started) {
-        this.stop();
+        this.stop(Reason.stop);
       } else {
         this.start();
       }
@@ -64,10 +64,10 @@ class Game {
       this.updateScoreBoard();
 
       if (this.score === this.carrotCount) {
-        this.finish(true);
+        this.stop(Reason.win);
       }
     } else if (item === 'bug') {
-      this.finish(false);
+      this.stop(Reason.lose);
     }
   }
 
@@ -84,27 +84,11 @@ class Game {
     sound.playBackground();
   }
 
-  stop() {
+  stop(res) {
     this.started = false;
     this.stopGameTimer();
     this.hideGameButton();
-    sound.playAlert();
-    sound.stopBackground();
-    this.onGameState && this.onGameState(Reason.stop);
-  }
-
-  finish(win) {
-    this.started = false;
-    this.hideGameButton();
-
-    if (win) {
-      sound.playWin();
-    } else {
-      sound.playBug();
-    }
-
-    this.stopGameTimer();
-    this.onGameState && this.onGameState(win ? Reason.win : Reason.lose);
+    this.onGameState && this.onGameState(res);
   }
 
   showStopButton() {
@@ -135,7 +119,7 @@ class Game {
     this.timer = setInterval(() => {
       if (remainingTimeSec <= 0) {
         clearInterval(this.timer);
-        this.finish(this.carrotCount === this.score);
+        this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
 
         return;
       }
