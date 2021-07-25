@@ -1,6 +1,6 @@
 'use strict';
 
-import Field from './field.js';
+import { Field, ItemType } from './field.js';
 import * as sound from './sound.js';
 
 // freeze : Immutable한 안전성 있는 객체 생성
@@ -59,14 +59,14 @@ class Game {
   onItemClick(item) {
     if (!this.started) return;
 
-    if (item === 'carrot') {
+    if (item === ItemType.carrot) {
       this.score++;
       this.updateScoreBoard();
 
       if (this.score === this.carrotCount) {
         this.stop(Reason.win);
       }
-    } else if (item === 'bug') {
+    } else if (item === ItemType.bug) {
       this.stop(Reason.lose);
     }
   }
