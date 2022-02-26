@@ -23,7 +23,6 @@ const lastPaginationButton = $(".pagination__button:last-child");
 const render = () => {
   slide();
   initEvents();
-  setInterval(slide, 3000);
 };
 
 const slide = () => {
@@ -59,9 +58,13 @@ const slide = () => {
   }
 };
 
+const autoSlide = setInterval(slide, 3000);
+
 // events
 const initEvents = () => {
   pagination.addEventListener("click", handlePaginationClick);
+
+  slider.addEventListener("mouseover", handleMouseOver);
 };
 
 const handlePaginationClick = (e) => {
@@ -92,6 +95,10 @@ const handlePaginationClick = (e) => {
       button.classList.add(CURRENT_CLASS);
     }
   });
+};
+
+const handleMouseOver = () => {
+  clearInterval(autoSlide);
 };
 
 render();
