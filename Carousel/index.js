@@ -11,6 +11,8 @@ const CURRENT_CLASS = "current";
 
 // dom
 const slider = $("#slider");
+const slides = document.querySelectorAll(".slider__item");
+const paginationButtons = document.querySelectorAll(".pagination__button");
 const firstSlide = $(".slider__item:first-child");
 const lastSlide = $(".slider__item:last-child");
 const prevButton = $(".slider__prev");
@@ -68,7 +70,7 @@ const initEvents = () => {
 
   slider.addEventListener("mouseout", handleMouseOut);
 
-  // prevButton.addEventListener("click", handlePrevClick);
+  prevButton.addEventListener("click", handlePrevClick);
 };
 
 const handlePaginationClick = (e) => {
@@ -77,8 +79,6 @@ const handlePaginationClick = (e) => {
 
   const currentSlide = $(`.${SHOWING_CLASS}`);
   const currentPaginationButton = $(`.${CURRENT_CLASS}`);
-  const slides = document.querySelectorAll(".slider__item");
-  const paginationButtons = document.querySelectorAll(".pagination__button");
   const dataIndex = target.dataset.index;
 
   currentSlide.classList.remove(SHOWING_CLASS);
@@ -109,21 +109,35 @@ const handleMouseOut = () => {
   autoSlide = setInterval(slide, 3000);
 };
 
-// const handlePrevClick = (e) => {
-//   const { target } = e;
-//   const currentSlide = $(`.${SHOWING_CLASS}`);
-//   const currentPaginationButton = `.${CURRENT_CLASS}`;
-//   const currentDataIndex = currentSlide.dataset.index;
-//   let prevDataIndex = 0;
+const handlePrevClick = () => {
+  const currentSlide = $(`.${SHOWING_CLASS}`);
+  const currentPaginationButton = $(`.${CURRENT_CLASS}`);
+  const currentDataIndex = currentSlide.dataset.index;
+  let prevDataIndex = 0;
 
-//   if (Number(currentDataIndex) === 1) {
-//     console.log(lastSlide);
-//     // prevDataIndex = lastSlide.dataset.index;
-//   } else {
-//     prevDataIndex = currentDataIndex - 1;
-//   }
-//   console.log(currentDataIndex);
-//   console.log(prevDataIndex);
-// };
+  if (Number(currentDataIndex) === 1) {
+    prevDataIndex = lastSlide.dataset.index;
+  } else {
+    prevDataIndex = (currentDataIndex - 1).toString();
+  }
+
+  currentSlide.classList.remove(SHOWING_CLASS);
+  currentPaginationButton.classList.remove(CURRENT_CLASS);
+
+  slides.forEach((slide) => {
+    const searchCurrentSlideDataIndex = slide.dataset.index;
+    if (searchCurrentSlideDataIndex === prevDataIndex) {
+      slide.classList.add(SHOWING_CLASS);
+    }
+  });
+
+  paginationButtons.forEach((button) => {
+    const searchCurrentPaginationButtonDataIndex = button.dataset.index;
+
+    if (searchCurrentPaginationButtonDataIndex === prevDataIndex) {
+      button.classList.add(CURRENT_CLASS);
+    }
+  });
+};
 
 render();
