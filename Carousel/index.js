@@ -58,13 +58,15 @@ const slide = () => {
   }
 };
 
-const autoSlide = setInterval(slide, 3000);
+let autoSlide = setInterval(slide, 3000);
 
 // events
 const initEvents = () => {
   pagination.addEventListener("click", handlePaginationClick);
 
   slider.addEventListener("mouseover", handleMouseOver);
+
+  slider.addEventListener("mouseout", handleMouseOut);
 };
 
 const handlePaginationClick = (e) => {
@@ -99,6 +101,10 @@ const handlePaginationClick = (e) => {
 
 const handleMouseOver = () => {
   clearInterval(autoSlide);
+};
+
+const handleMouseOut = () => {
+  autoSlide = setInterval(slide, 3000);
 };
 
 render();
