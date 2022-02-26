@@ -21,6 +21,7 @@ const lastPaginationButton = $(".pagination__button:last-child");
 // method
 const slide = () => {
   const currentSlide = $(`.${SHOWING_CLASS}`);
+  const currentPaginationButton = $(`.${CURRENT_CLASS}`);
 
   if (currentSlide) {
     currentSlide.classList.remove(SHOWING_CLASS);
@@ -34,6 +35,20 @@ const slide = () => {
     }
   } else {
     firstSlide.classList.add(SHOWING_CLASS);
+  }
+
+  if (currentPaginationButton) {
+    currentPaginationButton.classList.remove(CURRENT_CLASS);
+    const nextPaginationButton = currentPaginationButton.nextElementSibling;
+    const flag = nextPaginationButton?.classList.contains("pagination__button");
+
+    if (flag && nextPaginationButton) {
+      nextPaginationButton.classList.add(CURRENT_CLASS);
+    } else {
+      firstPaginationButton.classList.add(CURRENT_CLASS);
+    }
+  } else {
+    firstPaginationButton.classList.add(CURRENT_CLASS);
   }
 };
 
