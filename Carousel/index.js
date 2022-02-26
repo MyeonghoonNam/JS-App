@@ -32,7 +32,7 @@ const slide = () => {
   if (currentSlide) {
     currentSlide.classList.remove(SHOWING_CLASS);
     const nextSlide = currentSlide.nextElementSibling;
-    const flag = nextSlide.classList.contains("slider__item");
+    const flag = nextSlide?.classList.contains("slider__item");
 
     if (flag && nextSlide) {
       nextSlide.classList.add(SHOWING_CLASS);
@@ -67,6 +67,8 @@ const initEvents = () => {
   slider.addEventListener("mouseover", handleMouseOver);
 
   slider.addEventListener("mouseout", handleMouseOut);
+
+  // prevButton.addEventListener("click", handlePrevClick);
 };
 
 const handlePaginationClick = (e) => {
@@ -106,5 +108,22 @@ const handleMouseOver = () => {
 const handleMouseOut = () => {
   autoSlide = setInterval(slide, 3000);
 };
+
+// const handlePrevClick = (e) => {
+//   const { target } = e;
+//   const currentSlide = $(`.${SHOWING_CLASS}`);
+//   const currentPaginationButton = `.${CURRENT_CLASS}`;
+//   const currentDataIndex = currentSlide.dataset.index;
+//   let prevDataIndex = 0;
+
+//   if (Number(currentDataIndex) === 1) {
+//     console.log(lastSlide);
+//     // prevDataIndex = lastSlide.dataset.index;
+//   } else {
+//     prevDataIndex = currentDataIndex - 1;
+//   }
+//   console.log(currentDataIndex);
+//   console.log(prevDataIndex);
+// };
 
 render();
