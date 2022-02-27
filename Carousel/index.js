@@ -142,12 +142,12 @@ const handleNextClick = () => {
   const currentSlide = $(`.${SHOWING_CLASS}`);
   const currentPaginationButton = $(`.${CURRENT_CLASS}`);
   const currentDataIndex = Number(currentSlide.dataset.index);
-  let prevDataIndex = 0;
+  let nextDataIndex = 0;
 
   if (currentDataIndex === 5) {
-    prevDataIndex = firstSlide.dataset.index;
+    nextDataIndex = firstSlide.dataset.index;
   } else {
-    prevDataIndex = (currentDataIndex + 1).toString();
+    nextDataIndex = (currentDataIndex + 1).toString();
   }
 
   currentSlide.classList.remove(SHOWING_CLASS);
@@ -155,7 +155,7 @@ const handleNextClick = () => {
 
   slides.forEach((slide) => {
     const searchCurrentSlideDataIndex = slide.dataset.index;
-    if (searchCurrentSlideDataIndex === prevDataIndex) {
+    if (searchCurrentSlideDataIndex === nextDataIndex) {
       slide.classList.add(SHOWING_CLASS);
     }
   });
@@ -163,7 +163,7 @@ const handleNextClick = () => {
   paginationButtons.forEach((button) => {
     const searchCurrentPaginationButtonDataIndex = button.dataset.index;
 
-    if (searchCurrentPaginationButtonDataIndex === prevDataIndex) {
+    if (searchCurrentPaginationButtonDataIndex === nextDataIndex) {
       button.classList.add(CURRENT_CLASS);
     }
   });
