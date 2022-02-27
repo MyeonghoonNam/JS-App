@@ -65,12 +65,10 @@ let autoSlide = setInterval(slide, 3000);
 // events
 const initEvents = () => {
   pagination.addEventListener("click", handlePaginationClick);
-
   slider.addEventListener("mouseover", handleMouseOver);
-
   slider.addEventListener("mouseout", handleMouseOut);
-
   prevButton.addEventListener("click", handlePrevClick);
+  nextButton.addEventListener("click", handleNextClick);
 };
 
 const handlePaginationClick = (e) => {
@@ -119,6 +117,37 @@ const handlePrevClick = () => {
     prevDataIndex = lastSlide.dataset.index;
   } else {
     prevDataIndex = (currentDataIndex - 1).toString();
+  }
+
+  currentSlide.classList.remove(SHOWING_CLASS);
+  currentPaginationButton.classList.remove(CURRENT_CLASS);
+
+  slides.forEach((slide) => {
+    const searchCurrentSlideDataIndex = slide.dataset.index;
+    if (searchCurrentSlideDataIndex === prevDataIndex) {
+      slide.classList.add(SHOWING_CLASS);
+    }
+  });
+
+  paginationButtons.forEach((button) => {
+    const searchCurrentPaginationButtonDataIndex = button.dataset.index;
+
+    if (searchCurrentPaginationButtonDataIndex === prevDataIndex) {
+      button.classList.add(CURRENT_CLASS);
+    }
+  });
+};
+
+const handleNextClick = () => {
+  const currentSlide = $(`.${SHOWING_CLASS}`);
+  const currentPaginationButton = $(`.${CURRENT_CLASS}`);
+  const currentDataIndex = Number(currentSlide.dataset.index);
+  let prevDataIndex = 0;
+
+  if (currentDataIndex === 5) {
+    prevDataIndex = firstSlide.dataset.index;
+  } else {
+    prevDataIndex = (currentDataIndex + 1).toString();
   }
 
   currentSlide.classList.remove(SHOWING_CLASS);
