@@ -67,8 +67,8 @@ const initEvents = () => {
   pagination.addEventListener("click", handlePaginationClick);
   slider.addEventListener("mouseover", handleMouseOver);
   slider.addEventListener("mouseout", handleMouseOut);
-  prevButton.addEventListener("click", handlePrevClick);
-  nextButton.addEventListener("click", handleNextClick);
+  prevButton.addEventListener("click", handleImageControlButtonClick);
+  nextButton.addEventListener("click", handleImageControlButtonClick);
 };
 
 const handlePaginationClick = (e) => {
@@ -107,47 +107,30 @@ const handleMouseOut = () => {
   autoSlide = setInterval(slide, 3000);
 };
 
-const handlePrevClick = () => {
-  const currentSlide = $(`.${SHOWING_CLASS}`);
-  const currentPaginationButton = $(`.${CURRENT_CLASS}`);
-  const currentDataIndex = currentSlide.dataset.index;
-  let prevDataIndex = 0;
-
-  if (Number(currentDataIndex) === 1) {
-    prevDataIndex = lastSlide.dataset.index;
-  } else {
-    prevDataIndex = (currentDataIndex - 1).toString();
-  }
-
-  currentSlide.classList.remove(SHOWING_CLASS);
-  currentPaginationButton.classList.remove(CURRENT_CLASS);
-
-  slides.forEach((slide) => {
-    const searchCurrentSlideDataIndex = slide.dataset.index;
-    if (searchCurrentSlideDataIndex === prevDataIndex) {
-      slide.classList.add(SHOWING_CLASS);
-    }
-  });
-
-  paginationButtons.forEach((button) => {
-    const searchCurrentPaginationButtonDataIndex = button.dataset.index;
-
-    if (searchCurrentPaginationButtonDataIndex === prevDataIndex) {
-      button.classList.add(CURRENT_CLASS);
-    }
-  });
-};
-
-const handleNextClick = () => {
+const handleImageControlButtonClick = (e) => {
+  const mode = e.target.classList[0];
   const currentSlide = $(`.${SHOWING_CLASS}`);
   const currentPaginationButton = $(`.${CURRENT_CLASS}`);
   const currentDataIndex = Number(currentSlide.dataset.index);
   let nextDataIndex = 0;
 
-  if (currentDataIndex === 5) {
-    nextDataIndex = firstSlide.dataset.index;
-  } else {
-    nextDataIndex = (currentDataIndex + 1).toString();
+  switch (mode) {
+    case "slider__prev":
+      if (currentDataIndex === 1) {
+        nextDataIndex = lastSlide.dataset.index;
+      } else {
+        nextDataIndex = (currentDataIndex - 1).toString();
+      }
+      break;
+    case "slider__next":
+      if (currentDataIndex === 5) {
+        nextDataIndex = firstSlide.dataset.index;
+      } else {
+        nextDataIndex = (currentDataIndex + 1).toString();
+      }
+      break;
+    default:
+      break;
   }
 
   currentSlide.classList.remove(SHOWING_CLASS);
