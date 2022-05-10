@@ -5,10 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carousel-v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="src/styles/style.css" />
   </head>
   <body>
-    <div>init</div>
+    <form>
+      <input
+        type="file"
+        accept="image/*"
+        id="image-upload-input"
+        multiple="multiple"
+      />
+      <label for="image-upload-input">Image Upload</label>
+    </form>
+
+    <section id="carousel">
+      <div class="carousel-cont">
+        <ul class="carousel-list"></ul>
+      </div>
+    </section>
     <script src="src/js/main.js"></script>
   </body>
 </html>
