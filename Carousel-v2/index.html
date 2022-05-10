@@ -14,19 +14,31 @@
     <link rel="stylesheet" href="src/styles/style.css" />
   </head>
   <body>
-    <form>
-      <input
-        type="file"
-        accept="image/*"
-        id="image-upload-input"
-        multiple="multiple"
-      />
-      <label for="image-upload-input">Image Upload</label>
-    </form>
-
     <section id="carousel">
+      <form>
+        <input
+          type="file"
+          accept="image/*"
+          id="image-upload-input"
+          multiple="multiple"
+        />
+        <label for="image-upload-input">Image Upload</label>
+      </form>
+
       <div class="carousel-cont">
-        <ul class="carousel-list"></ul>
+        <ul class="carousel-list">
+          <li class="carousel-item">
+            <img src="" alt="" />
+          </li>
+          <li class="carousel-item">
+            <img src="" alt="" />
+          </li>
+          <li class="carousel-item">
+            <img src="" alt="" />
+          </li>
+        </ul>
+        <button type="button" class="prev-btn">&lt Prev</button>
+        <button type="button" class="next-btn">Next &gt</button>
       </div>
     </section>
     <script src="src/js/main.js"></script>
